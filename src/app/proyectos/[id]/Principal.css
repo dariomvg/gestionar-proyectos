@@ -1,0 +1,50 @@
+.section-page-project {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-details-project {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.links-page-project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    width: 70%;
+    padding-top: 30px;
+}
+
+.link-page-project {
+    text-decoration: none;
+    color: #2f69f5;
+    transition: color .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+.link-page-project:hover {
+    transition: color .5s;
+    color: #608aeb;
+
+}
+.icon-link{
+    transition: .5s;
+    opacity: 0;
+    visibility: hidden;
+
+}
+.link-page-project:hover .icon-link{
+    transition: .5s;
+    opacity: 1;
+    visibility: visible;
+
+}

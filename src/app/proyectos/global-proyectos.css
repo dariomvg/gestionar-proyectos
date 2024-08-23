@@ -1,0 +1,30 @@
+.wrapper-projects {
+    width: 100%;
+    display: flex;
+}
+
+.projects-section-all {
+    position: relative;
+    width: 100%; 
+    height: 100vh; 
+    
+} 
+
+
+.container-project {
+    padding: 10px; 
+    position: relative;
+
+}
+
+.container-target-project {
+    background-color: #141414; 
+    border-radius: 12px;
+    width: 100%; 
+    height: 100vh; 
+    overflow-y: auto;
+
+}
+
+
+

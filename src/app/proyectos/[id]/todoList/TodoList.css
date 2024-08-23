@@ -1,0 +1,92 @@
+.section-page-todoList {
+  width: 100%;
+  height: 100vh;
+  padding: 60px 10px 10px 10px;
+  overflow-x: auto;
+}
+.section-cards-todoList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.form-todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-todo-list {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  color: #000;
+  outline: none;
+}
+.input-todo-list::placeholder {
+    color: #000;
+}
+.input-todo-list:focus {
+    border-color: #0c64a9;
+}
+.btn-todo-list {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #0c64a9;
+    background-color: #0c64a9;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-todoList {
+  width: 100%;
+  background-color: #fff;
+  
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title-card-todoList {
+  color: #000;  
+}
+
+.container-btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.complete-task {
+  background-color: #99ff00;
+}
+
+.btn-card-todoList {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete {
+  background-color: #dc3545;
+}
+
+.completed {
+  background-color: #28a745;
+}
+
+.title-sin-tasks {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+}

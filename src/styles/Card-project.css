@@ -1,0 +1,17 @@
+.card-project {
+    padding: 8px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.icon-options {
+    cursor: pointer;
+}
+
+.title-card-project {
+    color: #fff;
+}

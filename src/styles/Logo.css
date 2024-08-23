@@ -1,0 +1,19 @@
+.logo {
+  font-size: 20;
+  font-weight: bold;
+}
+
+.logo-g {
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+}
+
+.logo-p {
+  color: #0c64a9;
+  text-shadow: 0 0 10px #0c64a9;
+  transform: translateX(-10px);
+}
+
+.link-logo {
+  text-decoration: none;
+}

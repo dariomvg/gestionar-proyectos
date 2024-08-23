@@ -1,0 +1,44 @@
+.page-projects {
+  width: 100%;
+  height: 100vh;
+}
+
+.projects-section-create {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+ 
+.container-projects-main {
+  width: 100%; 
+  padding-top: 100px;
+}
+
+.section-projects-title {
+  text-align: center;
+  padding-top: 60px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.container-projects-main {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 10px; 
+}
+
+
+
+
+
+
+
+

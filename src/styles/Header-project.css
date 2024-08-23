@@ -1,0 +1,60 @@
+.header-navbar-project {
+    width: 100%; 
+    position: fixed;
+}
+
+.navbar-project {
+    padding: 12px; 
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px; 
+    background-color: #121212;
+
+}
+
+.link-navbar {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: .5s;
+    border-bottom: 2px solid transparent;
+}
+
+
+.link-navbar:hover {
+    border-color: #0c64a9;
+    transition: .5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

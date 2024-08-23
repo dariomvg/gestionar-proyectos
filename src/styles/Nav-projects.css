@@ -1,0 +1,110 @@
+.aside-nav {
+    width: 250px; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+}
+
+.container-card-project {
+    position:relative; 
+    
+}
+
+.aside-container-top{
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.title-card-project {
+    cursor: pointer;
+}
+.aside-cont-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.icon-plus {
+    cursor: pointer; 
+}
+.aside-list-projects::-webkit-scrollbar { 
+        display: none;
+      }
+
+.aside-list-projects{
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.aside-container-bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.link-container-bottom {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: .5s;
+}
+
+.link-container-bottom:hover {
+    border-color: #fff;
+    transition: .5s;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+.section-page-semana {
+    width: 100%;
+    height: 100vh;
+    padding: 60px 10px 10px 10px;
+    overflow-x: auto;
+}
+
+.form-week {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-form-week {
+    color: #fff;
+}
+
+.container-input-week {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.label-input-week {
+    color: #eee;
+}
+
+.btn-week {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0c64a9;
+    color: #fff;
+    cursor: pointer;
+}
+
+.container-table-week {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.table-week {
+    width: 100%;
+}
+.textarea-table {
+    width: 100%;
+    height: 40px;
+    padding: 10px; 
+    background-color: transparent;
+    border: 2px solid transparent;
+    outline: none;
+    color: #fff;
+    resize: none;
+}
+.textarea-table:focus {
+    border-color: #0c64a9;
+}
+td {
+   padding: 10px; 
+   border: 1px solid #fff;
+}
+
+.container-btns-week {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding-top: 16px;
+}
+
+.btn-week {
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.delete-week {
+    background-color: #dc3545;
+}
+
+.save-dates {
+    background-color: #28a745;
+
+}
+
+
+
+
+
+
+
+
+
+
+
