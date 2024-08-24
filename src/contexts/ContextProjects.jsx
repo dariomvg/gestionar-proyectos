@@ -1,8 +1,4 @@
 "use client";
-import {
-  getLocalStorage,
-  setLocalStorage,
-} from "@/helpers/handle-localStorage";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const ContextProjects = createContext();
@@ -17,19 +13,16 @@ export default function ProjectsProvider({ children }) {
   const [viewCreate, setViewCreate] = useState(false);
   const [viewDetails, setViewDetails] = useState(false);
   const [dataProject, setDataProject] = useState({});
-  const [projects, setProjects] = useState(() => {
-    const savedTasks = getLocalStorage();
-    return savedTasks ? savedTasks : [];
-  });
+  const [projects, setProjects] = useState([]);
 
   const handleViewCreate = () => {
     setViewCreate(!viewCreate);
   };
 
   const findProject = (id) => {
-   const project = projects.find((item) => item.id == id);
-   return project; 
-  }
+    const project = projects.find((item) => item.id == id);
+    return project;
+  };
 
   const handleViewDetails = (data) => {
     setViewDetails(!viewDetails);
@@ -49,12 +42,18 @@ export default function ProjectsProvider({ children }) {
     setProjects(projects.filter((item) => item.id !== id));
   };
 
+  useEffect(() => {
+    const items = localStorage.getItem("projects");
+    const savedProjects = JSON.parse(items);
+    if (savedProjects.length > 0) {
+      setProjects(savedProjects);
+    }
+  }, []);
 
   useEffect(() => {
-    setLocalStorage(projects);
+    localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
 
- 
   return (
     <ContextProjects.Provider
       value={{
