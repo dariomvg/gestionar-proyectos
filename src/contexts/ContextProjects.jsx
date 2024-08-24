@@ -43,9 +43,8 @@ export default function ProjectsProvider({ children }) {
   };
 
   useEffect(() => {
-    const items = localStorage.getItem("projects");
-    const savedProjects = JSON.parse(items);
-    if (savedProjects.length > 0) {
+    const savedProjects = JSON.parse(localStorage.getItem("projects"));
+    if (savedProjects) {
       setProjects(savedProjects);
     }
   }, []);
