@@ -1,6 +1,6 @@
 "use client";
 import { useHandleProjects } from "@/contexts/ContextProjects";
-import { CustomKanbanTypes } from "@/types/types";
+import { CustomKanbanTypes } from "@/types/types.kanban";
 import { useEffect, useState } from "react";
 
 export const useCustomKanban = (id: number): CustomKanbanTypes => {

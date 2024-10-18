@@ -1,6 +1,6 @@
 "use client"
 import { useHandleProjects } from "@/contexts/ContextProjects";
-import { CustomTableTypes } from "@/types/types";
+import { CustomTableTypes } from "@/types/types.table";
 import { ChangeEvent, useState } from "react";
 
 export const useCustomTable = (id: number): CustomTableTypes => {

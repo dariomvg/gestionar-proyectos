@@ -1,7 +1,8 @@
 "use client"
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { notify } from "@/libs/toast";
-import { CustomWeekTypes, DataSemana } from "@/types/types";
+import {  DataSemana } from "@/types/types";
+import { CustomWeekTypes } from "@/types/types.week";
 import { useState } from "react";
 
 export const useCustomWeek = (id: number): CustomWeekTypes => {

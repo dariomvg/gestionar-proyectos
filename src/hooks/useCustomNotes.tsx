@@ -1,7 +1,7 @@
 "use client"
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { notify } from "@/libs/toast";
-import { CustomNoteTypes } from "@/types/types";
+import { CustomNoteTypes } from "@/types/types.notes";
 import { useState } from "react";
 
 export const useCustomNotes = (id: number): CustomNoteTypes => {
