@@ -1,0 +1,30 @@
+.container-card-details {
+  border-radius: 10px;
+  background-color: transparent;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-details-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    max-width:400px;    
+}
+.card-details-title {
+  font-size: 35px;
+  color: #ddd;
+  text-align: start;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-details-desc {
+    color: #989898;
+    font-family: 'Montserrat', sans-serif;
+    text-align: start;
+    font-size: 20px;
+}
