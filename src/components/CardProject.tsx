@@ -1,6 +1,6 @@
 "use client";
 import { PropsCard } from "@/types/types";
-import "@/styles/card-project.css";
+import "../styles/card-project.css";
 import { useRouter } from "next/navigation";
 
 export const CardProject = ({ item }: PropsCard): JSX.Element => {
