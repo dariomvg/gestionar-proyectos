@@ -26,7 +26,7 @@ export default function Home() {
         {details.map((item) => (
           <CardHome key={item.id} item={item} />
         ))}
-      <Link href="/documentacion" className="link-docs">Ir a la documentación</Link>    
+        
       </section>
       <section className="section-redirect">
         <div className="container-redirect">
