@@ -7,7 +7,7 @@ import iconLink from "@/assets/icons/icon-link.svg"
 import { ObjBaseDetailsTypes, PropsParamsId } from "@/types/types";
 import { objBaseDetails } from "@/libs/objBaseDetails";
 
-export default function idProject({params}: PropsParamsId) {
+export default function IdProject({params}: PropsParamsId) {
   const { findProject } = useHandleProjects();
   const [project, setProject] = useState<ObjBaseDetailsTypes>(objBaseDetails);
   const {id} = params;
@@ -17,7 +17,6 @@ export default function idProject({params}: PropsParamsId) {
      setProject(foundProject);
   }, [id]);
   
-
   return (
     <section className="section-page-project">
       <div className="container-details-project">

@@ -11,7 +11,7 @@ export const CardProject = ({ item }: PropsCard): JSX.Element => {
   };
 
   return (
-    <div className="card-main">
+    <div className="card-main" data-testid="card-main">
       <h2 className="card-main-title" onClick={handleNavigate}>
         {title}
       </h2>
