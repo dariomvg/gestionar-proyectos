@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import "../styles/btn-create.css";
+import "../styles/Btn-create.css";
 
 export const BtnCreate = (): JSX.Element => {
   return (

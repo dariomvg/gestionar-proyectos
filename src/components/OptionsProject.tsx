@@ -1,5 +1,5 @@
 "use client";
-import "../styles/optionsProject.css";
+import "../styles/OptionsProject.css";
 import { PropsCardNav } from "@/types/types";
 
 export const OptionsProject = ({
