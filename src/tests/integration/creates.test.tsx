@@ -1,10 +1,10 @@
 import Proyectos from "@/app/proyectos/page";
-import { ModalFormCreate } from "@/components/ModalFormCreate";
+import Nuevo from "@/app/nuevo/page";
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
 import { useRouter } from "next/navigation";
+
 
 jest.mock("@/contexts/ContextProjects", () => ({
   useHandleProjects: jest.fn(),
@@ -29,7 +29,7 @@ describe("Creación de proyectos", () => {
       handleViewCreate,
     });
 
-    render(<ModalFormCreate />);
+    render(<Nuevo />);
 
     const inputTitle = screen.getByRole("textbox", {
       name: "Nombre del proyecto",

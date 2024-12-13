@@ -1,33 +1,35 @@
 "use client";
+import "./nuevo.css";
 import { ChangeEvent, FormEvent, useState } from "react";
-import "../styles/Modal-form-create.css";
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { objBase } from "@/libs/objBase";
+import { useRouter } from "next/navigation";
 
-
-export const ModalFormCreate = (): JSX.Element => {
+export default function Nuevo(): JSX.Element {
   const [objForm, setObjForm] = useState(objBase);
-  const { handleViewCreate, handleProject } = useHandleProjects();
+  const { handleProject } = useHandleProjects();
+  const router = useRouter();
 
   const changeFormCreate = (e: ChangeEvent<HTMLInputElement>) => {
-    setObjForm({
-      ...objForm,
-      [e.target.name]: e.target.value,
-    });
+    const { value, name } = e.target;
+    setObjForm({ ...objForm, [name]: value });
   };
 
   const submitFormCreate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleProject(objForm);
+    router.push("/proyectos")
     setObjForm(objBase);
-    handleViewCreate();
+  };
+
+  const returnPage = () => {
+    setObjForm(objBase); 
+    router.push("/proyectos");
   };
 
   return (
     <form onSubmit={submitFormCreate} className="form-create">
-      <button className="btn-close-modal" onClick={() => handleViewCreate()}>
-        X
-      </button>
+      <button className="btn-close-modal" onClick={returnPage}>Volver</button>
       <div className="container-form">
         <div className="container-form-create">
           <label htmlFor="title" className="label-form-create">
@@ -83,4 +85,4 @@ export const ModalFormCreate = (): JSX.Element => {
       </div>
     </form>
   );
-};
+}

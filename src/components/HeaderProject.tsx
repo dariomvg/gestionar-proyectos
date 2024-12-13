@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../styles/Header-project.css";
+import "../styles/header-project.css";
 import { PropsHeaderProject } from "@/types/types";
 
 export const HeaderProject = ({id}: PropsHeaderProject): JSX.Element => {

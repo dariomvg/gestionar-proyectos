@@ -1,0 +1,73 @@
+.container-modal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000da;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.form-view {
+  width: 500px;
+  height: auto;
+  padding: 10px;
+  border: 1px solid #0c64a9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label-form-view {
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.input-form-view {
+  background-color: #fff;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  color: #000;
+  padding: 12px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.input-form-view::placeholder {
+  color: #000;
+}
+
+.button-form-view {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.5s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container-btn-form-view {
+  display: flex;
+  gap: 12px;
+}
+
+.close {
+  background-color: #dc3545;
+}
+
+.save {
+  background-color: #28a745;
+}
+
+.disabled {
+  background-color: #1c632c;
+}

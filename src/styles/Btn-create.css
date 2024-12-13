@@ -1,4 +1,4 @@
-.section-create-btn {
+.link-create {
     color: #fff;
     border: 2px solid #0c64a9;
     padding: 10px;
@@ -8,9 +8,11 @@
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    text-decoration: none;
   }
   
-  .section-create-btn:hover {
+  .link-create:hover {
     transition: 0.5s;
     box-shadow: 0 0 15px #0c64a9;
   }
+

@@ -1,16 +1,29 @@
-"use client"
+"use client";
 import { Logo } from "./Logo";
 import { CardNavProject } from "./CardNavProject";
 import Link from "next/link";
 import iconPlus from "../assets/icons/circle-plus.svg";
 import iconBack from "../assets/icons/arrow-back.svg";
-import "../styles/Nav-projects.css";
+import "../styles/nav-projects.css";
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { ObjBaseType } from "@/types/types";
+import { useRouter } from "next/navigation";
 
 export const NavProjects = (): JSX.Element => {
-        
-  const {projects, handleViewCreate } = useHandleProjects(); 
+  const { projects, deleteProject } = useHandleProjects();
+  const router = useRouter();
+
+  const createProject = () => {
+    router.push("/nuevo");
+  };
+
+  const viewProject = (id: number) => {
+    router.push(`/vista/proyecto/${id}`);
+  };
+
+  const removeProject = (id: number) => {
+    deleteProject(id);
+  };
 
   return (
     <aside className="aside-nav">
@@ -24,11 +37,19 @@ export const NavProjects = (): JSX.Element => {
             width={25}
             height={25}
             className="icon-plus"
-            onClick={() => handleViewCreate()}
+            onClick={createProject}
           />
         </div>
         <div className="aside-list-projects">
-          {projects.length > 0 && projects.map((item: ObjBaseType) => <CardNavProject key={item.id} item={item} />)}
+          {projects.length > 0 &&
+            projects.map((item: ObjBaseType) => (
+              <CardNavProject
+                key={item.id}
+                item={item}
+                viewProject={viewProject}
+                removeProject={removeProject}
+              />
+            ))}
         </div>
       </div>
       <div className="aside-container-bottom">

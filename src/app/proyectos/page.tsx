@@ -14,8 +14,7 @@ export default function Proyectos(): JSX.Element {
         <section className="section-projects-main">
           <h1 className="section-projects-title">Tus proyectos</h1>
           <section className="container-projects-main">
-            {projects &&
-              projects.map((item: ObjBaseType) => (
+            {projects.map((item: ObjBaseType) => (
                 <CardProject key={item.id} item={item} />
               ))}
           </section>

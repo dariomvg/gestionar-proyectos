@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { ReactNode } from "react";
 
 export interface ObjBaseType {
   id: number;
@@ -19,15 +19,8 @@ export interface DetailsMainTypes {
 }
 
 export interface ContextProjectsTypes {
-  viewCreate: boolean;
-  viewDetails: boolean;
-  dataProject: ObjBaseDetailsTypes;
-  setDataProject: Dispatch<SetStateAction<{}>>;
   projects: ObjBaseType[];
-  handleViewCreate: () => void;
-  closeModalDetails: () => void; 
   findProject: (id: number) => ObjBaseType;
-  handleViewDetails: (data: ObjBaseDetailsTypes) => void;
   handleProject: (data: ObjBaseType) => void;
   deleteProject: (id: number) => void;
 }
@@ -58,12 +51,6 @@ export interface TaskTodolist {
   complete: boolean;
 }
 
-export interface ObjBaseDetailsTypes {
-  id: number;
-  title: string;
-  date_limit: string;
-  description: string;
-}
 
 export interface PropsParamsId {
   params: { id: string };
@@ -78,6 +65,12 @@ export interface PropsLayoutId {
 
 export interface PropsCard {
   item: ObjBaseType;
+}
+
+export interface PropsCardNav {
+  item: ObjBaseType;
+  viewProject: (id: number) => void;
+  removeProject: (id: number) => void; 
 }
 
 export interface PropsCardDetails {

@@ -1,15 +1,14 @@
 "use client";
-import { useHandleProjects } from "@/contexts/ContextProjects";
-import "../styles/OptionsProject.css";
-import { PropsCard } from "@/types/types";
+import "../styles/optionsProject.css";
+import { PropsCardNav } from "@/types/types";
 
-export const OptionsProject = ({item}: PropsCard): JSX.Element => {
-  const { deleteProject, handleViewDetails } = useHandleProjects();
+export const OptionsProject = ({item, viewProject, removeProject}: PropsCardNav): JSX.Element => {
+
 
   return (
     <div className="container-option">
-      <button className="btn-option" onClick={() => deleteProject(item.id)}>Eliminar proyecto</button>
-      <button className="btn-option" onClick={() => handleViewDetails(item)}>Ver descripción</button>
+      <button className="btn-option" onClick={() => removeProject(item.id)}>Eliminar proyecto</button>
+      <button className="btn-option" onClick={() => viewProject(item.id)}>Ver descripción</button>
     </div>
   );
 };

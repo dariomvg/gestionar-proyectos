@@ -4,19 +4,20 @@ import iconOptions from "../assets/icons/options.svg";
 import { OptionsProject } from "./OptionsProject";
 import { useRouter } from "next/navigation";
 import "../styles/card-nav-project.css";
-import { PropsCard } from "@/types/types";
+import { PropsCardNav } from "@/types/types";
 
-export const CardNavProject = ({item}: PropsCard): JSX.Element => {
+export const CardNavProject = ({item, viewProject, removeProject}: PropsCardNav): JSX.Element => {
   const [active, setActive] = useState(false); 
   const router = useRouter();
-  const handleNavigate = () => {
+
+  const navigateToProject = () => {
     router.push(`proyectos/${item.id}`);
   };
 
   return (
     <div className="container-card-project">
       <div className="card-project">
-        <strong className="title-card-project" onClick={handleNavigate}>     
+        <strong className="title-card-project" onClick={navigateToProject}>     
           {item.title}
           </strong>
         <img
@@ -28,7 +29,7 @@ export const CardNavProject = ({item}: PropsCard): JSX.Element => {
           onClick={() => setActive(!active)}
         />
       </div>
-      {active && <OptionsProject item={item}/>}
+      {active && <OptionsProject item={item} viewProject={viewProject} removeProject={removeProject} />}
       
     </div>
   );

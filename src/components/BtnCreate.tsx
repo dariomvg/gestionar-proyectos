@@ -1,11 +1,10 @@
 "use client"
-import { useHandleProjects } from "@/contexts/ContextProjects";
-import "../styles/Btn-create.css"
+import Link from "next/link"
+import "../styles/btn-create.css"
 
 export const BtnCreate = (): JSX.Element => {
-  const {handleViewCreate } = useHandleProjects(); 
 
   return (
-    <button className="section-create-btn" onClick={() => handleViewCreate()}>Crea un nuevo proyecto</button>
+    <Link href="/nuevo" className="link-create">Crea un nuevo proyecto</Link>
   )
 }

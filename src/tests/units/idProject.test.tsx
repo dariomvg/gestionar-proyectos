@@ -14,6 +14,11 @@ describe("Renderizar proyectos en navProject", () => {
         title: "app tasks",
         description: "create app with react and node",
         date_limit: "24-06-2024",
+        data_semana: {},
+        kanban: [],
+        notes: "",
+        semana: 0,
+        todoList: [],
       }),
     });
     render(<IdProject params={{ id: "1" }} />);

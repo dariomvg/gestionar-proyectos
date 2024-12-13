@@ -4,18 +4,17 @@ import "./Principal.css";
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import Link from "next/link";
 import iconLink from "@/assets/icons/icon-link.svg"
-import { ObjBaseDetailsTypes, PropsParamsId } from "@/types/types";
-import { objBaseDetails } from "@/libs/objBaseDetails";
+import { ObjBaseType, PropsParamsId } from "@/types/types";
+import { objBase } from "@/libs/objBase";
 
-export default function IdProject({params}: PropsParamsId) {
+export default function IdProject({params}: PropsParamsId): JSX.Element {
   const { findProject } = useHandleProjects();
-  const [project, setProject] = useState<ObjBaseDetailsTypes>(objBaseDetails);
-  const {id} = params;
-
+  const [project, setProject] = useState<ObjBaseType>(objBase);
+ 
   useEffect(() => {
-     const foundProject = findProject(parseInt(id));
-     setProject(foundProject);
-  }, [id]);
+     const currentProject = findProject(parseInt(params.id));
+     setProject(currentProject);
+  }, [params.id]);
   
   return (
     <section className="section-page-project">
@@ -31,19 +30,19 @@ export default function IdProject({params}: PropsParamsId) {
         </p>
       </div>
       <div className="links-page-project">
-      <Link href={`/proyectos/${id}/tabla-kanban`} className="link-page-project">
+      <Link href={`/proyectos/${params.id}/tabla-kanban`} className="link-page-project">
           Tabla kanban
           <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
         </Link>
-        <Link href={`/proyectos/${id}/semana`} className="link-page-project">
+        <Link href={`/proyectos/${params.id}/semana`} className="link-page-project">
           Semana
           <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
         </Link>
-        <Link href={`/proyectos/${id}/notas` }className="link-page-project">
+        <Link href={`/proyectos/${params.id}/notas` }className="link-page-project">
           Notas
           <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
         </Link>
-        <Link href={`/proyectos/${id}/todoList`} className="link-page-project">
+        <Link href={`/proyectos/${params.id}/todoList`} className="link-page-project">
           To-do List
           <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
         </Link>

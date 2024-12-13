@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../styles/Logo.css";
+import "../styles/logo.css";
 
 export const Logo = (): JSX.Element => {
   return (

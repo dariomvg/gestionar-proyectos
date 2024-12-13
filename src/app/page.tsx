@@ -5,7 +5,7 @@ import Link from "next/link";
 import "./Home.css";
 import { details } from "@/libs/detailsMain";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <main className="wrapper-main">
       <Header />
