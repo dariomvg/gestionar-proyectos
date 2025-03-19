@@ -26,13 +26,6 @@ export default function Home(): JSX.Element {
         {details.map((item) => (
           <CardHome key={item.id} item={item} />
         ))}
-        
-      </section>
-      <section className="section-redirect">
-        <div className="container-redirect">
-          <h2 className="container-redirect-title">Comienza a crear y gestionar tus propios proyectos</h2>
-          <Link href="/proyectos" className="container-redirect-link">Comenzar</Link>
-        </div>
       </section>
       <Footer />
     </main>

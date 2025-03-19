@@ -8,7 +8,7 @@ export const Footer = (): JSX.Element => {
         <div className="footer-container-first">
             <Logo />
             <b>|</b>
-            <p>todos lo derechos reservados 2024</p>
+            <p>Todos lo derechos reservados 2024</p>
         </div>
         <div className="footer-container-second">
             <h3>© Dario Martinez</h3>

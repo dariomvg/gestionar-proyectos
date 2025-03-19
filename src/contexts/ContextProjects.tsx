@@ -36,7 +36,7 @@ export default function ProjectsProvider({ children }: ChildrenContextType) {
 
   useEffect(() => {
     const savedProjects = JSON.parse(localStorage.getItem("projects"));
-    if (savedProjects.length > 0) {
+    if (savedProjects?.length > 0) {
       setProjects(savedProjects);
     }
   }, []);
