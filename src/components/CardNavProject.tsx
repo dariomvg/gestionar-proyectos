@@ -1,25 +1,19 @@
-"use client"
+"use client";
 import { useState } from "react";
 import iconOptions from "../assets/icons/options.svg";
-import { OptionsProject } from "./OptionsProject";
-import { useRouter } from "next/navigation";
-import "../styles/card-nav-project.css";
 import { PropsCardNav } from "@/types/types";
+import "../styles/card-nav-project.css";
+import Link from "next/link";
 
-export const CardNavProject = ({item, viewProject, removeProject}: PropsCardNav): JSX.Element => {
-  const [active, setActive] = useState(false); 
-  const router = useRouter();
-
-  const navigateToProject = () => {
-    router.push(`proyectos/${item.id}`);
-  };
+export const CardNavProject = ({ item, deleteProject }: PropsCardNav) => {
+  const [active, setActive] = useState(false);
 
   return (
     <div className="container-card-project">
       <div className="card-project">
-        <strong className="title-card-project" onClick={navigateToProject}>     
+        <Link href={`/proyectos/${item.id}`} className="link-card-project">
           {item.title}
-          </strong>
+        </Link>
         <img
           src={iconOptions.src}
           alt="options icon"
@@ -29,8 +23,16 @@ export const CardNavProject = ({item, viewProject, removeProject}: PropsCardNav)
           onClick={() => setActive(!active)}
         />
       </div>
-      {active && <OptionsProject item={item} viewProject={viewProject} removeProject={removeProject} />}
-      
+      {active && (
+        <div className="container-option">
+          <button className="btn-option" onClick={() => deleteProject(item.id)}>
+            Eliminar
+          </button>
+          <Link href={`/vista/proyecto/${item.id}`} className="link-option" >
+            Detalles
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

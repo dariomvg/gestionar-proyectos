@@ -1,19 +1,15 @@
 "use client";
 import { NavProjects } from "@/components/NavProjects";
-import { useHandleProjects } from "@/contexts/ContextProjects";
-import "./global-proyectos.css";
+import "./global-projects.css";
+import { ReactNode } from "react";
 
-export default function LayoutProyectos({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const { projects } = useHandleProjects();
-
+export default function LayoutProyectos({ children }: { children: ReactNode }) {
   return (
     <section className="wrapper-projects">
-      {projects.length > 0 && <NavProjects />}
+      <NavProjects />
       <section className="projects-section-all">
         <div className="container-projects">
-          <section className="container-target-project">{children}</section>
+          <main className="container-target-project">{children}</main>
         </div>
       </section>
     </section>

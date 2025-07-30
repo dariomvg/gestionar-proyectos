@@ -1,81 +1,97 @@
 .header {
-    width: 100%;
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    position: fixed;
-    z-index: 999;
-    background-color: #00000062;
-    backdrop-filter: blur(20px);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  z-index: 999;
+  background-color: #00000062;
+  backdrop-filter: blur(20px);
 }
-
 
 .header-icon-menu {
-    display: none; 
-    cursor: pointer; 
+  display: none;
+  cursor: pointer;
 }
 
-
-.header-nav{
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
-
-.nav-link{
-    font-size: 20px;
-    text-decoration: none;
-    color: #969696;
-    transition: all .5s;
-    border-bottom: 1px solid transparent;
-font-family: 'Montserrat', sans-serif;
-
+.nav-link {
+  font-size: 16px;
+  text-decoration: none;
+  color: #969696;
+  transition: all 0.5s;
+  font-family: "Montserrat", sans-serif;
 }
 .nav-link:hover {
-    color: #dbdbdb;
-    transition: all .5s;
-    border-color: #0c64a9;
+  color: #dbdbdb;
+  transition: all 0.5s;
 }
 
-.nav-icon-github{
-    cursor: Pointer; 
+.nav-button {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #141414;
+  color: #fff;
+  gap: 10px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border .5s; 
+}
+
+.nav-button:hover {
+  transition: border .5s; 
+  border-color: #fff; 
+}
+
+.container-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-user-avatar {
+    border-radius: 50%;
+}
+.nav-user-name {
+    font-size: 16px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
 }
 
 @media (max-width: 768px) {
-    .header-icon-menu {
-        display: flex; 
-    }
+  .header-icon-menu {
+    display: flex;
+  }
 
-    .header {
-        flex-wrap: wrap;
-    }
-    .header-nav {
-        width: 100%;
-        flex-direction: column;
-        height: 0; 
-        visibility: hidden;
-        opacity: 0;
-        padding-top: 5px;
-        
-    }
+  .header {
+    flex-wrap: wrap;
+  }
+  .header-nav {
+    width: 100%;
+    flex-direction: column;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    padding-top: 5px;
+  }
 
-    .active .header-nav{
-        height: auto; 
-        visibility: visible;
-        opacity: 1;
-        
-    }
-    .nav-link {
-        color: #fff; 
-    }
+  .active .header-nav {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+  .nav-link {
+    color: #fff;
+  }
 }
-
-
-
-
-
-

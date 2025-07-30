@@ -3,8 +3,7 @@ import { daysOfWeek } from "@/libs/dataPageWeek";
 import { useCustomTable } from "@/hooks/useCustomTable";
 import { PropsTableWeek } from "@/types/types.table";
 
-
-export const TableWeek = ({ days, handleDeleteWeek, saveWeek, id }: PropsTableWeek): JSX.Element => {
+export const TableWeek = ({ days, handleDeleteWeek, saveWeek, id }: PropsTableWeek) => {
   const {tasks, handleInputChange} = useCustomTable(id); 
 
   return (
@@ -33,7 +32,7 @@ export const TableWeek = ({ days, handleDeleteWeek, saveWeek, id }: PropsTableWe
         </tbody>
       </table>
       <div className="container-btns-week">
-        <button onClick={() => handleDeleteWeek()} className="btn-week delete-week">Eliminar semana</button>
+        <button onClick={() => handleDeleteWeek()} className="btn-week delete-week">Reiniciar semana</button>
         <button onClick={() => saveWeek(tasks)} className="btn-week save-dates">Guardar cambios</button>
       </div>
     </section>

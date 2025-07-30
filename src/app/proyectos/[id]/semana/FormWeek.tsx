@@ -2,9 +2,8 @@
 import { days } from "@/libs/dataPageWeek";
 import { FormEvent, useState } from "react";
 
-
-export const FormWeek = ({handleCreateWeek}): JSX.Element => {
-  const [selectedDay, setSelectedDay] = useState(0);
+export const FormWeek = ({handleCreateWeek}) => {
+  const [selectedDay, setSelectedDay] = useState<number>(0);
 
   const handleCheckboxChange = (value: number) => {
     selectedDay === value ? setSelectedDay(0) : setSelectedDay(value);
@@ -19,7 +18,7 @@ export const FormWeek = ({handleCreateWeek}): JSX.Element => {
   return (
     <form className="form-week" onSubmit={submitWeek}>
       <h3 className="title-form-week">
-        Elige los días que trabajarás en el proyecto:
+        Elige la cantidad de días de tu semana
       </h3>
       {days.map((day) => (
         <div className="container-input-week" key={day}>

@@ -2,10 +2,10 @@ import CardHome from "@/components/CardHome";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import Link from "next/link";
-import "./Home.css";
+import "./home.css";
 import { details } from "@/libs/detailsMain";
 
-export default function Home(): JSX.Element {
+export default function Home() {
   return (
     <main className="wrapper-main">
       <Header />

@@ -3,7 +3,7 @@ import { baseTask } from "@/libs/baseTaskTodolist";
 import { PropsFormlist } from "@/types/types.todolist";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-export const FormTodoList = ({ createTask }: PropsFormlist): JSX.Element => {
+export const FormTodoList = ({ createTask }: PropsFormlist) => {
   const [task, setTask] = useState(baseTask);
 
   const changeTasks = (e: ChangeEvent<HTMLInputElement>) => {

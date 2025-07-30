@@ -8,11 +8,11 @@
     gap: 20px;
 }
 
-.container-details-project {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.title-page-project {
+    font-size: 40px;
+    color: #fff;
 }
+
 .links-page-project {
     display: flex;
     justify-content: space-between;

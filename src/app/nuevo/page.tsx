@@ -1,11 +1,12 @@
 "use client";
-import "./nuevo.css";
+import "./form-new-project.css";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { objBase } from "@/libs/objBase";
 import { useRouter } from "next/navigation";
+import RequireAuth from "@/components/RequireAuth";
 
-export default function Nuevo(): JSX.Element {
+export default function FormNewProject() {
   const [objForm, setObjForm] = useState(objBase);
   const { handleProject } = useHandleProjects();
   const router = useRouter();
@@ -28,7 +29,8 @@ export default function Nuevo(): JSX.Element {
   };
 
   return (
-    <form onSubmit={submitFormCreate} className="form-create">
+    <RequireAuth>
+          <form onSubmit={submitFormCreate} className="form-create">
       <button className="btn-close-modal" onClick={returnPage}>Volver</button>
       <div className="container-form">
         <div className="container-form-create">
@@ -84,5 +86,7 @@ export default function Nuevo(): JSX.Element {
         </button>
       </div>
     </form>
+    </RequireAuth>
+
   );
 }

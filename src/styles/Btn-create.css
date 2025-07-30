@@ -1,18 +1,18 @@
 .link-create {
     color: #fff;
-    border: 2px solid #0c64a9;
-    padding: 10px;
-    background-color: transparent;
+    padding: 6px;
+    background-color: #0c64a9;
     font-weight: 500;
-    transition: 0.5s;
+    transition: background 0.5s;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
     text-decoration: none;
+    text-align: center;
   }
   
   .link-create:hover {
-    transition: 0.5s;
-    box-shadow: 0 0 15px #0c64a9;
+    background-color: #3d91d1; 
+    transition: background 0.5s;
   }
 

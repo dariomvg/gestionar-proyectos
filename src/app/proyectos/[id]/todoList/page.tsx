@@ -1,11 +1,11 @@
 "use client";
-import "./TodoList.css";
+import "./page-todo-list.css";
 import { CardTodoList } from "./CardTodoList";
 import { FormTodoList } from "./FormTodoList";
 import { useCustomTodoList } from "@/hooks/useCustomTodoList";
 import { PropsParamsId } from "@/types/types";
 
-export default function TodoList({ params }: PropsParamsId): JSX.Element {
+export default function TodoList({ params }: PropsParamsId) {
   const { id } = params;
   const { tasks, createTask, deleteTask, completeTask } = useCustomTodoList(parseInt(id));
 
@@ -23,7 +23,7 @@ export default function TodoList({ params }: PropsParamsId): JSX.Element {
             />
           ))
         ) : (
-          <p className="title-sin-tasks ">Sin tareas agregadas</p>
+          <p className="title-sin-tasks">Sin tareas agregadas</p>
         )}
       </section>
     </section>

@@ -19,9 +19,9 @@ const TaskForm = ({ addTask }: PropsTaskForm): JSX.Element => {
         value={taskContent}
         onChange={(e) => setTaskContent(e.target.value)}
         className='input-kanban'
-        placeholder="Add new task"
+        placeholder="Agregar nueva tarea..."
       />
-      <button type="submit" className='btn-kanban'>Add Task</button>
+      <button type="submit" className='btn-kanban'>Agregar</button>
     </form>
   );
 };

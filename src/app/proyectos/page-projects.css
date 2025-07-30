@@ -11,8 +11,12 @@
   align-items: center;
 }
 
+.title-section-create {
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
 
- 
 .container-projects-main {
   width: 100%; 
   padding-top: 100px;

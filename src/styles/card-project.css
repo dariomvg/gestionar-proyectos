@@ -4,26 +4,28 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border: 1px solid #eee;
+  background-color: #222222;
   border-radius: 5px;
   padding: 10px; 
 }
 
-.card-main-title {
-  color: #fff; 
+.link-card-project-main {
+  color: #ddd; 
   cursor: pointer;
-  transition: .5s;
+  text-decoration: none;
+  transition: color .5s;
+  font-weight: 500;
+  font-size: 18px; 
 
 }
-.card-main-title:hover {
-  text-decoration: underline;
-  color: #ddd;
-  transition: .5s;
+.link-card-project-main:hover {
+  color: #fff;
+  transition: color .5s;
 }
 
 .card-main-dates {
   color: #ddd;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .card-main-description {

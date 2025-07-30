@@ -1,13 +1,16 @@
 "use client";
 import Link from "next/link";
 import { Logo } from "./Logo";
-import "../styles/Header.css";
+import "../styles/header.css";
 import iconMenu from "../assets/icons/menu.svg";
-import iconGithubHeader from "../assets/icons/github.svg";
+import iconGoogle from "../assets/icons/google.svg";
 import { useState } from "react";
+import { useAuth } from "@/contexts/ContextAuth";
 
-export const Header = (): JSX.Element => {
+export const Header = () => {
   const [active, setActive] = useState<boolean>(false);
+  const { user, login, logout } = useAuth();
+
   return (
     <header className={`header ${active ? "active" : ""}`}>
       <Logo />
@@ -20,25 +23,36 @@ export const Header = (): JSX.Element => {
         onClick={() => setActive(!active)}
       />
       <nav className="header-nav">
-        <Link href="/" className="nav-link">
-          Príncipal
-        </Link>
-        <Link href="/proyectos" className="nav-link">
-          Proyectos
-        </Link>
-        <a
-          href="https://github.com/dariomvg/gestionar-proyectos"
-          rel="noreferrer"
-          target="_blank"
-          className="nav-link-contact">
-          <img
-            src={iconGithubHeader.src}
-            alt="github icon"
-            width={25}
-            height={25}
-            className="nav-icon-github"
-          />
-        </a>
+        {user.name ? (
+          <>
+            <Link href="/proyectos" className="nav-link">
+              Proyectos
+            </Link>
+            <div className="container-user">
+              <img
+                src={user.avatar}
+                alt="user avatar"
+                width={30}
+                height={30}
+                className="nav-user-avatar"
+              />
+              <span className="nav-user-name">{user.name}</span>
+            </div>
+            <button className="nav-button" onClick={logout}>
+              Cerrar sesión
+            </button>
+          </>
+        ) : (
+          <button className="nav-button" onClick={login}>
+            Iniciar sesión
+            <img
+              src={iconGoogle.src}
+              alt="icon google"
+              width={20}
+              height={20}
+            />
+          </button>
+        )}
       </nav>
     </header>
   );

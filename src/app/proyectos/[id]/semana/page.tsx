@@ -1,14 +1,12 @@
 "use client";
-
 import { FormWeek } from "./FormWeek";
 import { TableWeek } from "./TableWeek";
-import "./Semana.css";
+import "./page-week.css";
 import { ToastContainer } from "react-toastify";
 import { useCustomWeek } from "@/hooks/useCustomWeek";
 import { PropsParamsId } from "@/types/types";
 
-
-export default function Semana({ params }: PropsParamsId): JSX.Element {
+export default function Semana({ params }: PropsParamsId) {
   const { id } = params;
   const {days, handleCreateWeek, handleDeleteWeek, saveWeek} = useCustomWeek(parseInt(id)); 
 

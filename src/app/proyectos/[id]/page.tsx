@@ -1,48 +1,55 @@
-"use client";
-import { useEffect, useState } from "react";
-import "./Principal.css";
-import { useHandleProjects } from "@/contexts/ContextProjects";
+import { ReactNode } from "react";
+import "./projects.css";
 import Link from "next/link";
-import iconLink from "@/assets/icons/icon-link.svg"
-import { ObjBaseType, PropsParamsId } from "@/types/types";
-import { objBase } from "@/libs/objBase";
+import iconLink from "@/assets/icons/icon-link.svg";
+import { PropsParamsId } from "@/types/types";
+import imageNotes from "@/assets/image-page-project.svg";
 
-export default function IdProject({params}: PropsParamsId): JSX.Element {
-  const { findProject } = useHandleProjects();
-  const [project, setProject] = useState<ObjBaseType>(objBase);
- 
-  useEffect(() => {
-     const currentProject = findProject(parseInt(params.id));
-     setProject(currentProject);
-  }, [params.id]);
-  
+function LinkPageProject({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <Link href={href} className="link-page-project">
+      {children}
+      <img
+        src={iconLink.src}
+        alt="link"
+        width={20}
+        height={20}
+        className="icon-link"
+      />
+    </Link>
+  );
+}
+
+export default function IdProject({ params }: PropsParamsId) {
   return (
     <section className="section-page-project">
-      <div className="container-details-project">
-        <h2 className="title-details-project">{project.title}</h2>
-        <p className="description-details-project">
-          {project.description}
-        </p>
-        <p className="date-details-project"><b>Fecha límite: </b>{project.date_limit}</p>
-
-      </div>
+      <h1 className="title-page-project">Gestiona tu proyecto</h1>
+      <img
+        src={imageNotes.src}
+        alt="image notes"
+        width={400}
+        height={400}
+        className="image-page-projects"
+      />
       <div className="links-page-project">
-      <Link href={`/proyectos/${params.id}/tabla-kanban`} className="link-page-project">
-          Tabla kanban
-          <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
-        </Link>
-        <Link href={`/proyectos/${params.id}/semana`} className="link-page-project">
+        <LinkPageProject href={`/proyectos/${params.id}/tabla-kanban`}>
+          Tabla Kanban
+        </LinkPageProject>
+        <LinkPageProject href={`/proyectos/${params.id}/semana`}>
           Semana
-          <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
-        </Link>
-        <Link href={`/proyectos/${params.id}/notas` }className="link-page-project">
+        </LinkPageProject>
+        <LinkPageProject href={`/proyectos/${params.id}/notas`}>
           Notas
-          <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
-        </Link>
-        <Link href={`/proyectos/${params.id}/todoList`} className="link-page-project">
+        </LinkPageProject>
+        <LinkPageProject href={`/proyectos/${params.id}/todoList`}>
           To-do List
-          <img src={iconLink.src} alt="link" width={20} height={20} className="icon-link" />
-        </Link>
+        </LinkPageProject>
       </div>
     </section>
   );

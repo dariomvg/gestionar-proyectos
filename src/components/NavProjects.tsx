@@ -4,26 +4,13 @@ import { CardNavProject } from "./CardNavProject";
 import Link from "next/link";
 import iconPlus from "../assets/icons/circle-plus.svg";
 import iconBack from "../assets/icons/arrow-back.svg";
-import "../styles/Nav-projects.css";
+import "../styles/nav-projects.css";
 import { useHandleProjects } from "@/contexts/ContextProjects";
 import { ObjBaseType } from "@/types/types";
-import { useRouter } from "next/navigation";
+import { BtnCreate } from "./BtnCreate";
 
-export const NavProjects = (): JSX.Element => {
+export const NavProjects = () => {
   const { projects, deleteProject } = useHandleProjects();
-  const router = useRouter();
-
-  const createProject = () => {
-    router.push("/nuevo");
-  };
-
-  const viewProject = (id: number) => {
-    router.push(`/vista/proyecto/${id}`);
-  };
-
-  const removeProject = (id: number) => {
-    deleteProject(id);
-  };
 
   return (
     <aside className="aside-nav">
@@ -31,25 +18,22 @@ export const NavProjects = (): JSX.Element => {
         <Logo />
         <div className="aside-cont-title">
           <h4>Proyectos</h4>
-          <img
-            src={iconPlus.src}
-            alt="plus icon"
-            width={25}
-            height={25}
-            className="icon-plus"
-            onClick={createProject}
-          />
+          <Link href="/nuevo" className="link-aside-title">
+            <img src={iconPlus.src} alt="plus icon" width={25} height={25} />
+          </Link>
         </div>
         <div className="aside-list-projects">
-          {projects.length > 0 &&
+          {projects.length > 0 ? (
             projects.map((item: ObjBaseType) => (
               <CardNavProject
                 key={item.id}
                 item={item}
-                viewProject={viewProject}
-                removeProject={removeProject}
+                deleteProject={deleteProject}
               />
-            ))}
+            ))
+          ) : (
+            <BtnCreate />
+          )}
         </div>
       </div>
       <div className="aside-container-bottom">

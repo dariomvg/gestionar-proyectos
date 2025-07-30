@@ -1,7 +1,7 @@
 "use client";
 import KanbanBoard from "./KanbanBoard";
 import TaskForm from "./TaskForm";
-import "./Kanban.css";
+import "./page-kanban.css";
 import { useCustomKanban } from "@/hooks/useCustomKanban";
 import { PropsParamsId } from "@/types/types";
 

@@ -1,15 +1,12 @@
 import Link from "next/link";
-import "../styles/Header-project.css";
+import "../styles/header-project.css";
 import { PropsHeaderProject } from "@/types/types";
 
-export const HeaderProject = ({id}: PropsHeaderProject): JSX.Element => {
+export const HeaderProject = ({id}: PropsHeaderProject) => {
 
   return (
     <header className="header-navbar-project">
       <nav className="navbar-project">
-        <Link href="/proyectos" className="link-navbar">
-          Todos los proyectos
-        </Link>
         <Link href={`/proyectos/${id}/tabla-kanban`} className="link-navbar">
           Kanban
         </Link>

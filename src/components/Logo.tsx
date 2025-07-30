@@ -1,7 +1,7 @@
 import Link from "next/link";
-import "../styles/Logo.css";
+import "../styles/logo.css";
 
-export const Logo = (): JSX.Element => {
+export const Logo = () => {
   return (
     <Link href="/" className="link-logo">
       <h2 className="logo">

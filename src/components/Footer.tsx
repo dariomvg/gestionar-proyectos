@@ -1,21 +1,19 @@
-import "../styles/Footer.css";
+import "../styles/footer.css";
 import { Logo } from './Logo';
 import iconGithubFooter from "../assets/icons/github.svg";
 
-export const Footer = (): JSX.Element => {
+export const Footer = () => {
   return (
     <footer className="footer">
         <div className="footer-container-first">
             <Logo />
             <b>|</b>
-            <p>Todos lo derechos reservados 2024</p>
+            <p>Todos lo derechos reservados 2025</p>
         </div>
-        <div className="footer-container-second">
-            <h3>© Dario Martinez</h3>
-            <a href="https://github.com/dariomvg" target="_blank">
-                <img src={iconGithubFooter.src} alt="github icon" width={20} height={20} className="footer-icon-github" />
+            <a href="https://github.com/dariomvg" target="_blank" rel="noopener noreferrer">
+                <img src={iconGithubFooter.src} alt="github icon" width={25} height={25} className="footer-icon-github" />
             </a>
-        </div>
+        
     </footer>
   )
 }

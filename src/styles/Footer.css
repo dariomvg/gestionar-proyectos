@@ -14,13 +14,6 @@
     gap: 10px;
 }
 
-.footer-container-second {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-}
-
 .footer-icon-github {
     cursor: pointer;
 }

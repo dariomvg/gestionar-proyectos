@@ -1,12 +1,13 @@
 "use client";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "./Notas.css";
+import "./page-notes.css";
 import { ToastContainer } from 'react-toastify';
 import { useCustomNotes } from "@/hooks/useCustomNotes";
 import { PropsParamsId } from "@/types/types";
 
-export default function Notas({ params }: PropsParamsId): JSX.Element {
+
+export default function Notas({ params }: PropsParamsId) {
   const { id } = params;
   const {value, setValue, handleChangeNotes} = useCustomNotes(parseInt(id)); 
 

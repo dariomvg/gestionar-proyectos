@@ -24,6 +24,12 @@ export interface ContextProjectsTypes {
   deleteProject: (id: number) => void;
 }
 
+export interface ContextAuthTypes {
+  login: () =>void; 
+  logout: () => void;
+  user: {avatar: string; email: string; name: string} | null; 
+}
+
 export interface ChildrenContextType {
   children: ReactNode;
 }
@@ -68,8 +74,7 @@ export interface PropsCard {
 
 export interface PropsCardNav {
   item: ObjBaseType;
-  viewProject: (id: number) => void;
-  removeProject: (id: number) => void; 
+  deleteProject: (id: number) => void; 
 }
 
 export interface PropsCardDetails {

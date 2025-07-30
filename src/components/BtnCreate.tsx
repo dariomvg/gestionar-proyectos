@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import "../styles/Btn-create.css";
+import "../styles/btn-create.css";
 
-export const BtnCreate = (): JSX.Element => {
+export const BtnCreate = () => {
   return (
     <Link href="/nuevo" className="link-create">
-      Crea un nuevo proyecto
+      Nuevo proyecto
     </Link>
   );
 };

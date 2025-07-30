@@ -1,7 +1,7 @@
 import { PropsCardDetails } from "@/types/types";
 import "../styles/card-home.css";
 
-const CardHome = ({ item }: PropsCardDetails): JSX.Element => {
+const CardHome = ({ item }: PropsCardDetails)=> {
   return (
     <div className="container-card-details">
       <div className="card-details-text">

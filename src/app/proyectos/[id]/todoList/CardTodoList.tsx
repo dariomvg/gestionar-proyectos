@@ -1,5 +1,4 @@
 import { PropsCardList } from "@/types/types.todolist";
-import "./TodoList.css"; 
 
 export const CardTodoList = ({
   item,

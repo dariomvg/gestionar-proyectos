@@ -1,17 +1,71 @@
 .card-project {
     padding: 8px;
-    border: 1px solid #fff;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    background-color: #202020;
 }
 
 .icon-options {
     cursor: pointer;
 }
 
-.title-card-project {
+.link-card-project {
+    text-decoration: none;
+    color: #ddd;
+    transition: color .5s;
+
+}
+
+.link-card-project:hover {
     color: #fff;
+    transition: color .5s;
+}
+
+.container-option {
+    width: 100%; 
+    background-color: transparent; 
+    padding: 10px 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-option {
+    width: 100%; 
+    background-color: #202020;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid transparent; 
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: border 0.5s;
+
+}
+
+.btn-option:hover {
+    border-color: #fff;
+    transition: border 0.5s;
+}
+
+.link-option {
+     width: 100%; 
+    background-color: #202020;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid transparent; 
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: border 0.5s;
+    text-align: center; 
+    text-decoration: none;
+}
+
+.link-option:hover {
+    border-color: #fff;
+    transition: border 0.5s;
 }

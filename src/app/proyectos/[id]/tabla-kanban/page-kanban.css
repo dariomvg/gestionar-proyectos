@@ -3,17 +3,19 @@
   height: 100vh;
   padding: 60px 10px 10px 10px;
   overflow-x: auto;
+  display: flex; 
+  flex-direction: column;
+  gap: 12px;
 }
 
 .form-kanban {
-  padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
 }
 
 .input-kanban {
+  width: 300px; 
   border: 1px solid #fff;
   background-color: transparent;
   color: #fff;
