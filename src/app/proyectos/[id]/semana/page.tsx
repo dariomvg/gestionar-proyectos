@@ -1,27 +1,27 @@
 "use client";
 import { FormWeek } from "./FormWeek";
 import { TableWeek } from "./TableWeek";
-import "./page-week.css";
 import { ToastContainer } from "react-toastify";
 import { useCustomWeek } from "@/hooks/useCustomWeek";
-import { PropsParamsId } from "@/types/types";
+import "./page-week.css";
 
-export default function Semana({ params }: PropsParamsId) {
+export default function Semana({ params }: {params: { id: string } }) {
   const { id } = params;
-  const {days, handleCreateWeek, handleDeleteWeek, saveWeek} = useCustomWeek(parseInt(id)); 
+  const { createWeek, deleteWeek, saveWeek, handleInputChange, week } =
+    useCustomWeek(parseInt(id));
 
   return (
     <section className="section-page-semana">
       <ToastContainer />
-      {days > 0 ? (
+      {week.length > 0 ? (
         <TableWeek
-          days={days}
-          handleDeleteWeek={handleDeleteWeek}
-          id={parseInt(id)}
+          week={week}
+          deleteWeek={deleteWeek}
           saveWeek={saveWeek}
+          handleInputChange={handleInputChange}
         />
       ) : (
-        <FormWeek handleCreateWeek={handleCreateWeek} />
+        <FormWeek createWeek={createWeek} />
       )}
     </section>
   );

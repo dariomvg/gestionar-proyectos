@@ -1,38 +1,59 @@
-"use client"; 
-import { useHandleProjects } from "@/contexts/ContextProjects";
-import {  TaskTodolist } from "@/types/types";
+"use client";
+import { supabase } from "@/supabase/supabase";
+import { TaskTodolist } from "@/types/types.todolist";
 import { CustomTodolistTypes } from "@/types/types.todolist";
 import { useEffect, useState } from "react";
 
 export const useCustomTodoList = (id: number): CustomTodolistTypes => {
-    const { findProject, handleProject } = useHandleProjects();
-    const currentProject = findProject(id);
-  
-    const [tasks, setTasks] = useState<TaskTodolist[]>(currentProject.todoList || []);
+  const [tasks, setTasks] = useState<TaskTodolist[]>([]);
 
-    const createTask = (task: TaskTodolist) => {
-      task.id = Date.now();
-      setTasks([...tasks, task]);
-    };
-  
-    const deleteTask = (id: number) => {
-      setTasks(tasks.filter((task) => task.id !== id));
-    };
-  
-    const completeTask = (id: number) => {
-      setTasks(
-        tasks.map((task) =>
-          task.id === id
-            ? { ...task, complete: task.complete === true ? false : true }
-            : task
-        )
-      );
-    };
-  
-    useEffect(() => {
-      const newProject = { ...currentProject, todoList: tasks };
-      handleProject(newProject);
-    }, [tasks]);
-  
-    return { tasks, createTask, deleteTask, completeTask };
+  const createTask = async (task: TaskTodolist) => {
+    const { data, error } = await supabase
+      .from("tasks")
+      .insert([{ ...task, project_id: id }])
+      .select("*");
+
+    if (error) {
+      console.log("Error insert task", error);
+    }
+    console.log(data);
+  };
+
+  const deleteTask = async (idTask: number) => {
+    const { error } = await supabase.from("tasks").delete().eq("id", idTask);
+
+    if (error) {
+      console.log("Error insert task", error);
+    }
+  };
+
+  const completeTask = async (value: boolean) => {
+    const { error } = await supabase
+      .from("tasks")
+      .update({ complete: value })
+      .eq("id", id);
+
+      if(error) {
+        console.log("Error updating task", error);
+      }
+  };
+
+  useEffect(() => {
+    if (id) {
+      const getTasks = async () => {
+        const { data, error } = await supabase
+          .from("tasks")
+          .select("id, task, complete")
+          .eq("project_id", id);
+        if (error) {
+          console.log("Error fetching tasks", error);
+          return;
+        }
+
+        setTasks(data ? data : []);
+      };
+    }
+  }, [tasks]);
+
+  return { tasks, createTask, deleteTask, completeTask };
 };

@@ -2,7 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import Task from "./Task";
 import { PropsColumnTypes } from "@/types/types.kanban";
 
-const Column = ({ id, title, tasks, deleteTask }: PropsColumnTypes): JSX.Element => {
+const Column = ({ id, title, tasks, deleteTask }: PropsColumnTypes) => {
   const { setNodeRef } = useDroppable({ id });
 
   return (

@@ -2,7 +2,7 @@ import { PropsKanbanBoard } from "@/types/types.kanban";
 import Column from "./Column";
 import { DndContext } from "@dnd-kit/core";
 
-const KanbanBoard = ({ tasks, moveTask, deleteTask }: PropsKanbanBoard): JSX.Element => {
+const KanbanBoard = ({ tasks, moveTask, deleteTask }: PropsKanbanBoard) => {
 
   const columns = {
     tareas: {

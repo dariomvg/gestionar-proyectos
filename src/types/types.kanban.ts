@@ -1,10 +1,8 @@
-import { TaskKanbanType } from "./types";
-
 export interface CustomKanbanTypes {
   tasks: TaskKanbanType[];
   addTask: (content: string) => void;
-  moveTask: (taskId: string, newColumn: string) => void;
-  deleteTask: (id: string) => void;
+  moveTask: (idTask: number, newColumn: string) => void;
+  deleteTask: (id: number) => void;
 }
 
 export interface PropsTaskForm {
@@ -13,19 +11,26 @@ export interface PropsTaskForm {
 
 export interface PropsKanbanBoard {
   tasks: TaskKanbanType[];
-  moveTask: (taskId: string, newColumn: string) => void;
-  deleteTask: (id: string) => void;
+  moveTask: (idTask: number, newColumn: string) => void;
+  deleteTask: (id: number) => void;
 }
 
 export interface PropsColumnTypes {
   id: string;
   title: string;
   tasks: TaskKanbanType[];
-  deleteTask: (id: string) => void;
+  deleteTask: (id: number) => void;
 }
 
 export interface PropsTaskKanban {
-  id: string;
+  id: number;
   content: string;
-  deleteTask: (id: string) => void;
+  deleteTask: (id: number) => void;
 }
+
+export interface TaskKanbanType {
+  id: number;
+  content: string;
+  column: string;
+}
+

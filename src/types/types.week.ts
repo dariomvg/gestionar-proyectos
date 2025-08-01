@@ -1,9 +1,16 @@
-import { DataSemana } from "./types";
+import { ChangeEvent } from "react";
 
 export interface CustomWeekTypes {
-    days: number;
-    handleCreateWeek: (day: number) => void;
-    handleDeleteWeek: () => void;
-    saveWeek: (tasks: DataSemana) => void;
-  }
-  
+  createWeek: (day: number) => void;
+  deleteWeek: () => void;
+  saveWeek: () => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  week: {id: number, day: string, content: string}[]
+}
+
+export interface PropsTableWeek {
+  deleteWeek: () => void;
+  saveWeek: () => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  week: {id: number, day: string, content: string}[]
+}

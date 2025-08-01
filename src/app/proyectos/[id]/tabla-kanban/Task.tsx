@@ -1,7 +1,7 @@
 import { PropsTaskKanban } from "@/types/types.kanban";
 import { useDraggable } from "@dnd-kit/core";
 
-const Task = ({ id, content, deleteTask }: PropsTaskKanban): JSX.Element => {
+const Task = ({ id, content, deleteTask }: PropsTaskKanban) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id,
   });

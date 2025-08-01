@@ -3,9 +3,8 @@ import KanbanBoard from "./KanbanBoard";
 import TaskForm from "./TaskForm";
 import "./page-kanban.css";
 import { useCustomKanban } from "@/hooks/useCustomKanban";
-import { PropsParamsId } from "@/types/types";
 
-export default function TablaKanban({ params }: PropsParamsId): JSX.Element {
+export default function TablaKanban({ params }: {params:{ id: string}}) {
   const { id } = params;
   const { tasks, moveTask, deleteTask, addTask } = useCustomKanban(parseInt(id))
 
@@ -16,3 +15,4 @@ export default function TablaKanban({ params }: PropsParamsId): JSX.Element {
     </section>
   );
 }
+

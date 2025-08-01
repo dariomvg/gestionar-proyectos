@@ -1,7 +1,7 @@
-import { PropsCardDetails } from "@/types/types";
+import { DetailsMainTypes } from "@/types/types";
 import "../styles/card-home.css";
 
-const CardHome = ({ item }: PropsCardDetails)=> {
+const CardHome = ({ item }: {item: DetailsMainTypes})=> {
   return (
     <div className="container-card-details">
       <div className="card-details-text">

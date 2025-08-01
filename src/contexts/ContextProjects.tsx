@@ -1,59 +1,89 @@
 "use client";
+import { supabase } from "@/supabase/supabase";
 import {
-  ChildrenContextType,
   ContextProjectsTypes,
   ObjBaseType,
 } from "@/types/types";
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 const ContextProjects = createContext<ContextProjectsTypes | null>(null);
 
-export const useHandleProjects = (): ContextProjectsTypes => {
+export const useProjects = (): ContextProjectsTypes => {
   const context = useContext(ContextProjects);
   if (!context) throw new Error("Contexto con alcanze insuficiente");
   return context;
 };
 
-export default function ProjectsProvider({ children }: ChildrenContextType) {
+export default function ProjectsProvider({ children }: {children: ReactNode}) {
   const [projects, setProjects] = useState<ObjBaseType[]>([]);
 
-  const findProject = (id: number) => {
-    const project = projects.find((item) => item.id === id);
-    return project;
-  };
-
-  const handleProject = (data: ObjBaseType) => {
-    if (data.id) {
-      setProjects(projects.map((item) => (item.id === data.id ? data : item)));
-    } else {
-      setProjects([...projects, { ...data, id: Date.now() }]);
+  const searchProject = async (id: number) => {
+    const { data: projects, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("id", id);
+    if (error) {
+      console.error("Error fetching project:", error);
+      return [];
     }
+    return projects;
   };
 
-  const deleteProject = (id: number) => {
-    setProjects(projects.filter((item) => item.id !== id));
+  const addNewProject = async (project: ObjBaseType) => {
+    const { data, error } = await supabase.from("projects").insert([project]);
+    if (error) {
+      console.error("Error adding project:", error);
+      return null;
+    }
+    console.log(data);
+  };
+
+  const updateProject = async (project: ObjBaseType) => {
+    const { data, error } = await supabase
+      .from("projects")
+      .update(project)
+      .eq("id", project.id);
+    if (error) {
+      console.error("Error updating project:", error);
+      return;
+    }
+    console.log(data);
+  };
+
+  const removeProject = async (id: number) => {
+    const { data, error } = await supabase
+      .from("projects")
+      .delete()
+      .eq("id", id);
+    if (error) {
+      console.error("Error deleting project:", error);
+      return;
+    }
+    console.log(data);
   };
 
   useEffect(() => {
-    const savedProjects = JSON.parse(localStorage.getItem("projects"));
-    if (savedProjects?.length > 0) {
-      setProjects(savedProjects);
-    }
+    const getProjects = async () => {
+      const { data: projects, error } = await supabase
+        .from("projects")
+        .select("*");
+      if (error) {
+        console.error("Error fetching projects:", error);
+        return;
+      }
+      setProjects(projects || []);
+    };
+    // getProjects();
   }, []);
-
-  useEffect(() => {
-    if (projects) {
-      localStorage.setItem("projects", JSON.stringify(projects));
-    }
-  }, [projects]);
 
   return (
     <ContextProjects.Provider
       value={{
-        handleProject,
-        deleteProject,
         projects,
-        findProject,
+        searchProject,
+        addNewProject,
+        removeProject,
+        updateProject,
       }}>
       {children}
     </ContextProjects.Provider>

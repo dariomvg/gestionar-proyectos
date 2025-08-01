@@ -1,8 +1,7 @@
 import Link from "next/link";
 import "../styles/header-project.css";
-import { PropsHeaderProject } from "@/types/types";
 
-export const HeaderProject = ({id}: PropsHeaderProject) => {
+export const HeaderProject = ({id}: {id: string}) => {
 
   return (
     <header className="header-navbar-project">

@@ -1,4 +1,3 @@
-"use client";
 import { NavProjects } from "@/components/NavProjects";
 import "./global-projects.css";
 import { ReactNode } from "react";

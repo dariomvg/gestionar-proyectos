@@ -71,7 +71,7 @@
     transition: .5s;
 }
 
-.btn-close-modal {
+.link-close-modal {
     padding: 10px;
     font-size: 18px;
     color: #fff;
@@ -79,5 +79,6 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    text-decoration: none;
 }
 

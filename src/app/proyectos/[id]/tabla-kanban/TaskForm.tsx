@@ -2,8 +2,8 @@
 import { PropsTaskForm } from '@/types/types.kanban';
 import { FormEvent, useState } from 'react';
 
-const TaskForm = ({ addTask }: PropsTaskForm): JSX.Element => {
-  const [taskContent, setTaskContent] = useState('');
+const TaskForm = ({ addTask }: PropsTaskForm) => {
+  const [taskContent, setTaskContent] = useState<string>('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

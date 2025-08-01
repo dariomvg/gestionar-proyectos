@@ -2,16 +2,16 @@
 import { days } from "@/libs/dataPageWeek";
 import { FormEvent, useState } from "react";
 
-export const FormWeek = ({handleCreateWeek}) => {
+export const FormWeek = ({ createWeek }) => {
   const [selectedDay, setSelectedDay] = useState<number>(0);
 
-  const handleCheckboxChange = (value: number) => {
+  const checkboxChange = (value: number) => {
     selectedDay === value ? setSelectedDay(0) : setSelectedDay(value);
   };
 
   const submitWeek = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleCreateWeek(selectedDay);
+    createWeek(selectedDay);
     setSelectedDay(0);
   };
 
@@ -27,10 +27,10 @@ export const FormWeek = ({handleCreateWeek}) => {
             id={`${day}`}
             value={day}
             checked={selectedDay == day}
-            onChange={() => handleCheckboxChange(day)}
+            onChange={() => checkboxChange(day)}
           />
           <label htmlFor={`${day}`} className="label-input-week">
-            {day} día{day > 1 && "s"}
+            {day}
           </label>
         </div>
       ))}

@@ -1,9 +1,8 @@
-"use client";
-import { PropsCard } from "@/types/types";
+import { ObjBaseType } from "@/types/types";
 import "../styles/card-project.css";
 import Link from "next/link";
 
-export const CardProject = ({ item }: PropsCard) => {
+export const CardProject = ({ item }: {item: ObjBaseType}) => {
   const { title, description, date_limit, id } = item;
 
   return (

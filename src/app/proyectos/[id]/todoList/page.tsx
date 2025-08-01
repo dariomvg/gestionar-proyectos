@@ -14,9 +14,9 @@ export default function TodoList({ params }: PropsParamsId) {
       <FormTodoList createTask={createTask} />
       <section className="section-cards-todoList">
         {tasks.length > 0 ? (
-          tasks.map((item, index) => (
+          tasks.map((item) => (
             <CardTodoList
-              key={index}
+              key={item.id}
               item={item}
               deleteTask={deleteTask}
               completeTask={completeTask}

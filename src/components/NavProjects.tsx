@@ -5,12 +5,12 @@ import Link from "next/link";
 import iconPlus from "../assets/icons/circle-plus.svg";
 import iconBack from "../assets/icons/arrow-back.svg";
 import "../styles/nav-projects.css";
-import { useHandleProjects } from "@/contexts/ContextProjects";
 import { ObjBaseType } from "@/types/types";
 import { BtnCreate } from "./BtnCreate";
+import { useProjects } from "@/contexts/ContextProjects";
 
 export const NavProjects = () => {
-  const { projects, deleteProject } = useHandleProjects();
+  const { projects, removeProject: deleteProject } = useProjects();
 
   return (
     <aside className="aside-nav">

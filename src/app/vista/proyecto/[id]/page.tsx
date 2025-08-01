@@ -1,42 +1,34 @@
 "use client";
 
-import { ChangeEvent, FormEvent } from "react";
 import "./view-project.css";
-import { useFindProject } from "@/hooks/useFindProject";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { PropsParamsId } from "@/types/types";
 import RequireAuth from "@/components/RequireAuth";
+import { useViewProject } from "@/hooks/useViewProject";
+import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 
-export default function ViewProject({ params }: PropsParamsId) {
-  const { project, setProject, updateProject, isDisabled, setIsDisabled } =
-    useFindProject(params.id);
+export default function ViewProject({ params }: { params: { id: string } }) {
+  const { project, isDisabled, changeProject, sendProject } = useViewProject(
+    parseInt(params.id)
+  );
   const router = useRouter();
-
-  const handleChangeDetails = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setProject({ ...project, [name]: value });
-    setIsDisabled(false);
-  };
-
-  const submitDetails = (e: FormEvent<HTMLFormElement>) => {
+  const submitProject = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateProject();
-    setIsDisabled(true);
+    sendProject();
     router.push("/proyectos");
   };
 
   return (
     <RequireAuth>
       <section className="container-modal">
-        <form className="form-view" onSubmit={submitDetails}>
+        <form className="form-view" onSubmit={submitProject}>
           <label className="label-form-view">Nombre del proyecto</label>
           <input
             type="text"
             className="input-form-view"
             name="title"
             value={project.title}
-            onChange={handleChangeDetails}
+            onChange={changeProject}
           />
           <label className="label-form-view">Fecha límite</label>
           <input
@@ -44,13 +36,13 @@ export default function ViewProject({ params }: PropsParamsId) {
             className="input-form-view"
             name="date_limit"
             value={project.date_limit}
-            onChange={handleChangeDetails}
+            onChange={changeProject}
           />
           <label className="label-form-view">Descripción</label>
           <input
             name="description"
             value={project.description}
-            onChange={handleChangeDetails}
+            onChange={changeProject}
             type="text"
             className="input-form-view"
           />

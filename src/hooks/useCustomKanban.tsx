@@ -1,42 +1,63 @@
 "use client";
-import { useHandleProjects } from "@/contexts/ContextProjects";
+import { supabase } from "@/supabase/supabase";
+import { TaskKanbanType } from "@/types/types.kanban";
 import { CustomKanbanTypes } from "@/types/types.kanban";
 import { useEffect, useState } from "react";
 
 export const useCustomKanban = (id: number): CustomKanbanTypes => {
-    const { findProject, handleProject } = useHandleProjects();
-    const currentProject = findProject(id);
-    
-    const [tasks, setTasks] = useState(() => {
-      if (currentProject.kanban) return currentProject.kanban;
-      return [];
-    });
-  
-    const addTask = (content: string) => {
-      const newTask = {
-        id: `task-${tasks.length + 1}`,
-        content,
-        column: "tareas",
+  const [tasks, setTasks] = useState<TaskKanbanType[]>([]);
+
+  const addTask = async (content: string) => {
+    const newTask = {
+      content,
+      column: "tareas",
+    };
+    const { data, error } = await supabase
+      .from("kanban")
+      .insert([newTask])
+      .select();
+    if (error) {
+      console.error("Error adding task:", error);
+      return;
+    }
+    console.log(data);
+  };
+
+  const moveTask = async (idTask: number, newColumn: string) => {
+    const { error } = await supabase
+      .from("kanban")
+      .update({ column: newColumn })
+      .eq("id", idTask);
+    if (error) {
+      console.error("Error deleting task:", error);
+      return;
+    }
+  };
+
+  const deleteTask = async (idTask: number) => {
+    const { error } = await supabase.from("kanban").delete().eq("id", idTask);
+    if (error) {
+      console.error("Error deleting task:", error);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      const getTasks = async () => {
+        const { data: tasks, error } = await supabase
+          .from("kanban")
+          .select("*")
+          .eq("project_id", id);
+        if (error) {
+          console.error("Error fetching tasks:", error);
+          return;
+        }
+        setTasks(tasks || []);
       };
-      setTasks([...tasks, newTask]);
-    };
-  
-    const moveTask = (taskId: string, newColumn: string) => {
-      setTasks(
-        tasks.map((task) =>
-          task.id === taskId ? { ...task, column: newColumn } : task
-        )
-      );
-    };
-  
-    const deleteTask = (id: string) => {
-      setTasks(tasks.filter((task) => task.id !== id)); 
-    };
-  
-    useEffect(() => {
-      const newProject = { ...currentProject, kanban: tasks };
-      handleProject(newProject);
-    }, [tasks]);
-  
-    return { tasks, moveTask, deleteTask, addTask }
-}
+      // getTasks();
+    }
+  }, [id]);
+
+  return { tasks, moveTask, deleteTask, addTask };
+};

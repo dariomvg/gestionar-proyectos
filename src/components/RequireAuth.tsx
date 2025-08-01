@@ -8,10 +8,10 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
   const router = useRouter();
 
   useEffect(() => {
-    if (!user?.email) {
+    if (!user?.name) {
       router.push("/");
     }
   }, [user, router]);
 
-  return <>{user?.email ? children : null}</>;
+  return <>{user?.name ? children : null}</>;
 }

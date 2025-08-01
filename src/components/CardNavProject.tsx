@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import iconOptions from "../assets/icons/options.svg";
-import { PropsCardNav } from "@/types/types";
+import { ObjBaseType } from "@/types/types";
 import "../styles/card-nav-project.css";
 import Link from "next/link";
 
-export const CardNavProject = ({ item, deleteProject }: PropsCardNav) => {
+export const CardNavProject = ({ item, deleteProject }: {item: ObjBaseType, deleteProject: (id: number) => void}) => {
   const [active, setActive] = useState(false);
 
   return (
