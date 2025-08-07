@@ -7,10 +7,8 @@ export const FormTodoList = ({ createTask }: PropsFormlist) => {
   const [task, setTask] = useState(baseTask);
 
   const changeTasks = (e: ChangeEvent<HTMLInputElement>) => {
-    setTask({
-      ...task,
-      [e.target.name]: e.target.value,
-    });
+    const {name, value} = e.target;
+    setTask({...task, [name]: value});
   };
 
   const submitTasks = (e: FormEvent<HTMLFormElement>) => {

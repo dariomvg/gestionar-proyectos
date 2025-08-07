@@ -5,6 +5,11 @@
     justify-content: space-between;
     align-items: center;
     background-color: #202020;
+    border: 1px solid transparent; 
+}
+
+.active-card-nav {
+    border-color: #0c64a9;
 }
 
 .icon-options {

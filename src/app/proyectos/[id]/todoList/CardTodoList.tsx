@@ -15,7 +15,7 @@ export const CardTodoList = ({
           Eliminar
         </button>
         <button
-          onClick={() => completeTask(!item.complete)}
+          onClick={() => completeTask(!item.complete, item.id)}
           className="btn-card-todoList completed">
           {item.complete ? "Deshacer" : "Completado"}
         </button>

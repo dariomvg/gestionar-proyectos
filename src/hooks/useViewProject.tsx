@@ -1,14 +1,13 @@
 "use client";
 import { useProjects } from "@/contexts/ContextProjects";
-import { objBase } from "@/libs/objBase";
-import { ObjBaseType } from "@/types/types";
+import { ObjProjectBase } from "@/types/types";
 import { UseViewProject } from "@/types/types.viewproject";
 import { useEffect, useState, ChangeEvent } from "react";
 
 export const useViewProject = (id: number): UseViewProject => {
   const { updateProject, searchProject } = useProjects();
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
-  const [project, setProject] = useState<ObjBaseType>(objBase);
+  const [project, setProject] = useState<ObjProjectBase>({title: "", description: "", id: null, date_limit: ""});
   
   const changeProject = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -22,11 +21,11 @@ export const useViewProject = (id: number): UseViewProject => {
   };
 
   useEffect(() => {
-    if (id) {
+    if (id !== null) {
       const findProject = async () => {
-        const projects = await searchProject(id);
-        if (projects.length > 0) {
-          setProject(projects[0]);
+        const editProject = await searchProject(id);
+        if (editProject.length > 0) {
+          setProject(editProject[0]);
         } else {
           console.error("Project not found");
         }

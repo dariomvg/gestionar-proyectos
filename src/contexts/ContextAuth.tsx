@@ -49,6 +49,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
       } = await supabase.auth.getSession();
       if (session) {
         setUser({
+          user_id: session.user.id,
           email: session.user.email,
           avatar: session.user.user_metadata.avatar_url,
           name:

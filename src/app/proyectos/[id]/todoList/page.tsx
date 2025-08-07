@@ -3,9 +3,8 @@ import "./page-todo-list.css";
 import { CardTodoList } from "./CardTodoList";
 import { FormTodoList } from "./FormTodoList";
 import { useCustomTodoList } from "@/hooks/useCustomTodoList";
-import { PropsParamsId } from "@/types/types";
 
-export default function TodoList({ params }: PropsParamsId) {
+export default function TodoList({ params }: {params: {id: string}}) {
   const { id } = params;
   const { tasks, createTask, deleteTask, completeTask } = useCustomTodoList(parseInt(id));
 

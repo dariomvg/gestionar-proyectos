@@ -5,12 +5,12 @@ import { ObjBaseType } from "@/types/types";
 import "../styles/card-nav-project.css";
 import Link from "next/link";
 
-export const CardNavProject = ({ item, deleteProject }: {item: ObjBaseType, deleteProject: (id: number) => void}) => {
+export const CardNavProject = ({ item, deleteProject, id }: {item: ObjBaseType, deleteProject: (id: number) => void, id: number}) => {
   const [active, setActive] = useState(false);
 
   return (
     <div className="container-card-project">
-      <div className="card-project">
+      <div className={`card-project ${id === item.id ? "active-card-nav" : ""}`}>
         <Link href={`/proyectos/${item.id}`} className="link-card-project">
           {item.title}
         </Link>

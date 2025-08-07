@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@/contexts/ContextAuth";
 import { supabase } from "@/supabase/supabase";
 import { TaskTodolist } from "@/types/types.todolist";
 import { CustomTodolistTypes } from "@/types/types.todolist";
@@ -6,11 +7,11 @@ import { useEffect, useState } from "react";
 
 export const useCustomTodoList = (id: number): CustomTodolistTypes => {
   const [tasks, setTasks] = useState<TaskTodolist[]>([]);
-
-  const createTask = async (task: TaskTodolist) => {
+  const {user} = useAuth(); 
+  const createTask = async (task: {task: string, complete: boolean}) => {
     const { data, error } = await supabase
       .from("tasks")
-      .insert([{ ...task, project_id: id }])
+      .insert([{ ...task, project_id: id, user_id: user.user_id }])
       .select("*");
 
     if (error) {
@@ -27,11 +28,11 @@ export const useCustomTodoList = (id: number): CustomTodolistTypes => {
     }
   };
 
-  const completeTask = async (value: boolean) => {
+  const completeTask = async (value: boolean, idTask: number) => {
     const { error } = await supabase
       .from("tasks")
       .update({ complete: value })
-      .eq("id", id);
+      .eq("id", idTask);
 
       if(error) {
         console.log("Error updating task", error);
@@ -39,7 +40,7 @@ export const useCustomTodoList = (id: number): CustomTodolistTypes => {
   };
 
   useEffect(() => {
-    if (id) {
+    if (id !== null) {
       const getTasks = async () => {
         const { data, error } = await supabase
           .from("tasks")
@@ -52,6 +53,7 @@ export const useCustomTodoList = (id: number): CustomTodolistTypes => {
 
         setTasks(data ? data : []);
       };
+      getTasks(); 
     }
   }, [tasks]);
 

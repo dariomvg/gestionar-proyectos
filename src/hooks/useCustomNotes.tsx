@@ -17,12 +17,11 @@ export const useCustomNotes = (id: number): CustomNoteTypes => {
       console.error("Error fetching project:", error);
       return [];
     }
-    console.log(projects);
     notify()
   };
 
   useEffect(() => {
-    if (id) {
+    if (id !== null) {
       const findNotesProject = async () => {
         const { data: projects, error } = await supabase
           .from("projects")
@@ -34,7 +33,7 @@ export const useCustomNotes = (id: number): CustomNoteTypes => {
         }
         setValue(projects[0]?.notes || "");
       };
-      // findNotesProject()
+      findNotesProject()
     }
   }, [id]);
 

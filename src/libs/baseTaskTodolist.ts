@@ -1,7 +1,4 @@
-import { TaskTodolist } from "@/types/types";
-
-export const baseTask: TaskTodolist = {
-    id: 0,
+export const baseTask: {task: string, complete: boolean} = {
     task: "",
     complete: false,
   };

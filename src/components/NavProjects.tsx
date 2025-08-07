@@ -5,12 +5,13 @@ import Link from "next/link";
 import iconPlus from "../assets/icons/circle-plus.svg";
 import iconBack from "../assets/icons/arrow-back.svg";
 import "../styles/nav-projects.css";
-import { ObjBaseType } from "@/types/types";
 import { BtnCreate } from "./BtnCreate";
 import { useProjects } from "@/contexts/ContextProjects";
+import { useParams } from "next/navigation";
 
 export const NavProjects = () => {
   const { projects, removeProject: deleteProject } = useProjects();
+  const params = useParams<{id: string}>();
 
   return (
     <aside className="aside-nav">
@@ -24,9 +25,10 @@ export const NavProjects = () => {
         </div>
         <div className="aside-list-projects">
           {projects.length > 0 ? (
-            projects.map((item: ObjBaseType) => (
+            projects.map((item) => (
               <CardNavProject
                 key={item.id}
+                id={params.id ? parseInt(params.id) : null}
                 item={item}
                 deleteProject={deleteProject}
               />

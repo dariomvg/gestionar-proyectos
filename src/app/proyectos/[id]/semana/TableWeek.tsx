@@ -17,15 +17,15 @@ export const TableWeek = ({
           </tr>
         </thead>
         <tbody>
-          {week.map((item) => (
-            <tr key={item.id}>
-              <td className="day">{item.day}</td>
+          {week.map(({day, content, id}) => (
+            <tr key={id}>
+              <td className="day">{day}</td>
               <td>
                 <input
                   type="text"
-                  name={item.day}
-                  value={item.content}
-                  onChange={handleInputChange}
+                  name={day}
+                  value={content}
+                  onChange={(e) => handleInputChange(e.target.value, id)}
                   className="textarea-table"
                 />
               </td>
@@ -34,10 +34,10 @@ export const TableWeek = ({
         </tbody>
       </table>
       <div className="container-btns-week">
-        <button onClick={() => deleteWeek()} className="btn-week delete-week">
+        <button onClick={deleteWeek} className="btn-week delete-week">
           Reiniciar semana
         </button>
-        <button onClick={() => saveWeek()} className="btn-week save-dates">
+        <button onClick={saveWeek} className="btn-week save-dates">
           Guardar cambios
         </button>
       </div>

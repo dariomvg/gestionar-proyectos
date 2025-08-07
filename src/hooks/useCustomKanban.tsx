@@ -3,14 +3,18 @@ import { supabase } from "@/supabase/supabase";
 import { TaskKanbanType } from "@/types/types.kanban";
 import { CustomKanbanTypes } from "@/types/types.kanban";
 import { useEffect, useState } from "react";
-
+import {useAuth} from "@/contexts/ContextAuth"
 export const useCustomKanban = (id: number): CustomKanbanTypes => {
   const [tasks, setTasks] = useState<TaskKanbanType[]>([]);
+  const {user} = useAuth();
 
+  
   const addTask = async (content: string) => {
     const newTask = {
       content,
       column: "tareas",
+      user_id: user.user_id,
+      project_id: id
     };
     const { data, error } = await supabase
       .from("kanban")
@@ -20,7 +24,6 @@ export const useCustomKanban = (id: number): CustomKanbanTypes => {
       console.error("Error adding task:", error);
       return;
     }
-    console.log(data);
   };
 
   const moveTask = async (idTask: number, newColumn: string) => {
@@ -43,7 +46,7 @@ export const useCustomKanban = (id: number): CustomKanbanTypes => {
   };
 
   useEffect(() => {
-    if (id) {
+    if (id !== null) {
       const getTasks = async () => {
         const { data: tasks, error } = await supabase
           .from("kanban")
@@ -55,9 +58,9 @@ export const useCustomKanban = (id: number): CustomKanbanTypes => {
         }
         setTasks(tasks || []);
       };
-      // getTasks();
+      getTasks();
     }
-  }, [id]);
+  }, [id, tasks]);
 
   return { tasks, moveTask, deleteTask, addTask };
 };

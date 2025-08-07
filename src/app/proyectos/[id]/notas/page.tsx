@@ -9,6 +9,7 @@ export default function Notas({ params }: {params: { id: string }}) {
   const { id } = params;
   const { value, setValue, updateNotes } = useCustomNotes(parseInt(id));
 
+  
   return (
     <section className="section-page-notas">
       <button onClick={updateNotes} className="btn-page-notas">

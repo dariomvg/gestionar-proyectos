@@ -6,7 +6,7 @@
   padding: 10px;
   position: fixed;
   z-index: 999;
-  background-color: #00000062;
+  background-color: transparent;
   backdrop-filter: blur(20px);
 }
 

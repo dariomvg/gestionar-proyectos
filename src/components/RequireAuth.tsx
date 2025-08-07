@@ -9,7 +9,7 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     if (!user?.name) {
-      router.push("/");
+      router.push("/iniciar-sesion");
     }
   }, [user, router]);
 

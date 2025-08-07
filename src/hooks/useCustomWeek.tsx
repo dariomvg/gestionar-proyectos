@@ -1,34 +1,25 @@
 "use client";
+import { useAuth } from "@/contexts/ContextAuth";
 import { daysOfWeek } from "@/libs/dataPageWeek";
 import { notify } from "@/libs/toast";
 import { supabase } from "@/supabase/supabase";
 import { CustomWeekTypes } from "@/types/types.week";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useCustomWeek = (id: number): CustomWeekTypes => {
   const [week, setWeek] = useState<
     { id: number; day: string; content: string }[]
   >([]);
 
-  const createWeek = async (days: number) => {
-    const { error } = await supabase
-      .from("projects")
-      .insert([{ days_week: days }])
-      .eq("id", id);
-    if (error) {
-      console.error("Error creating week:", error);
-      return;
-    }
-    const newWeek = await addNewWeek(days);
-    if (newWeek) setWeek(newWeek);
-  };
+  const { user } = useAuth();
 
-  const addNewWeek = async (days: number) => {
+  const createWeek = async (days: number) => {
     const quantityWeek = daysOfWeek.slice(0, days);
     const newWeek = quantityWeek.map((day) => ({
       project_id: id,
       day,
       content: "",
+      user_id: user.user_id,
     }));
     const { data, error } = await supabase
       .from("week")
@@ -38,15 +29,20 @@ export const useCustomWeek = (id: number): CustomWeekTypes => {
       console.error("Error adding new week:", error);
       return;
     }
-    return data;
+    if (data.length > 0) {
+      console.log("New week added:", data);
+      setWeek(data);
+    }
   };
 
   const deleteWeek = async () => {
-    try {
-      await supabase.from("projects").update({ days_week: 0 }).eq("id", id);
+    const { error } = await supabase.from("week").delete().eq("project_id", id);
 
-      await supabase.from("week").delete().eq("project_id", id);
-    } catch (error) {}
+    if (error) {
+      console.log("Error: no se pudo eliminar la semana", error);
+      return;
+    }
+    setWeek([]);
   };
 
   const saveWeek = async () => {
@@ -65,13 +61,14 @@ export const useCustomWeek = (id: number): CustomWeekTypes => {
     }
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setWeek({ ...week, [name]: value });
+  const handleInputChange = (value: string, id: number) => {
+    setWeek(
+      week.map((item) => (item.id === id ? { ...item, content: value } : item))
+    );
   };
 
   useEffect(() => {
-    if (id) {
+    if (id !== null) {
       const getWeek = async () => {
         const { data, error } = await supabase
           .from("week")
@@ -82,7 +79,7 @@ export const useCustomWeek = (id: number): CustomWeekTypes => {
         }
         setWeek(data ? data : []);
       };
-      // getWeek()
+      getWeek();
     }
   }, [id]);
 
