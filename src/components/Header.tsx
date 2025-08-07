@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Logo } from "./Logo";
-import "../styles/header.css";
+import "@/styles/header.css";
 import iconMenu from "../assets/icons/menu.svg";
 import iconGoogle from "../assets/icons/google.svg";
 import { useState } from "react";

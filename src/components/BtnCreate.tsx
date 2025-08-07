@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../styles/btn-create.css";
+import "@/styles/btn-create.css";
 
 export const BtnCreate = () => {
   return (
