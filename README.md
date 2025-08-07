@@ -2,8 +2,8 @@
 
 ### Lista de herramientas
 
-> Tabla kanban
-> Todo list
-> Organizar semana
-> Tus propias notas
+> Tabla kanban  
+> Todo list  
+> Organizar semana  
+> Tus propias notas  
 
