@@ -4,7 +4,7 @@ import { CardNavProject } from "./CardNavProject";
 import Link from "next/link";
 import iconPlus from "../assets/icons/circle-plus.svg";
 import iconBack from "../assets/icons/arrow-back.svg";
-import "@/styles/nav-projects.css";
+import "@/styles/Nav-projects.css";
 import { BtnCreate } from "./BtnCreate";
 import { useProjects } from "@/contexts/ContextProjects";
 import { useParams } from "next/navigation";

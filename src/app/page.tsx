@@ -2,7 +2,7 @@ import CardHome from "@/components/CardHome";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import Link from "next/link";
-import "./home.css";
+import "./Home.css";
 import { details } from "@/libs/detailsMain";
 
 export default function Home() {

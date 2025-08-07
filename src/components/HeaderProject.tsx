@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../styles/header-project.css";
+import "../styles/Header-project.css";
 
 export const HeaderProject = ({id}: {id: string}) => {
 

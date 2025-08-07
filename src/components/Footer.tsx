@@ -1,4 +1,4 @@
-import "../styles/footer.css";
+import "../styles/Footer.css";
 import { Logo } from './Logo';
 import iconGithubFooter from "../assets/icons/github.svg";
 

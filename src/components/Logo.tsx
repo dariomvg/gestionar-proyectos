@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "@/styles/logo.css";
+import "@/styles/Logo.css";
 
 export const Logo = () => {
   return (
