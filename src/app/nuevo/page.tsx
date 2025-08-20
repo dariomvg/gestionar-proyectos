@@ -1,27 +1,31 @@
 "use client";
 import "./form-new-project.css";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { objBase } from "@/libs/objBase";
+import { FormEvent, useRef } from "react";
 import { useRouter } from "next/navigation";
 import RequireAuth from "@/components/RequireAuth";
-import { ObjBaseType } from "@/types/types";
 import { useProjects } from "@/contexts/ContextProjects";
 import Link from "next/link";
 
 export default function FormNewProject() {
   const {addNewProject} = useProjects()
-  const [objForm, setObjForm] = useState<ObjBaseType>(objBase);
-  const router = useRouter();
+  const refTitle = useRef<HTMLInputElement>(null); 
+  const refDate = useRef<HTMLInputElement>(null); 
+  const refDescription = useRef<HTMLInputElement>(null); 
 
-  const changeFormCreate = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setObjForm({ ...objForm, [name]: value });
-  };
+  const router = useRouter();
 
   const submitFormCreate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addNewProject(objForm);
-    setObjForm(objBase);
+    const newProject = {
+      title: refTitle.current.value,
+      description: refDescription.current.value,
+      date_limit: refDate.current.value,
+      notes: ""
+    }
+    addNewProject(newProject);
+    refTitle.current.value = ""; 
+    refDate.current.value = ""; 
+    refDescription.current.value = ""; 
     router.push("/proyectos");
   };
 
@@ -39,12 +43,11 @@ export default function FormNewProject() {
             <input
               required
               type="text"
-              value={objForm.title}
               name="title"
               id="title"
               placeholder="Aprender react, crear una app en javascript..."
-              onChange={changeFormCreate}
               className="input-form-create"
+              ref={refTitle}
             />
           </div>
 
@@ -56,11 +59,10 @@ export default function FormNewProject() {
               required
               type="date"
               placeholder="11/06/2024"
-              value={objForm.date_limit}
               name="date_limit"
               id="date_limit"
-              onChange={changeFormCreate}
               className="input-form-create"
+              ref={refDate}
             />
           </div>
 
@@ -74,9 +76,8 @@ export default function FormNewProject() {
               name="description"
               id="description"
               placeholder="Proyecto de prueba..."
-              value={objForm.description}
-              onChange={changeFormCreate}
               className="input-form-create"
+              ref={refDescription}
             />
           </div>
 

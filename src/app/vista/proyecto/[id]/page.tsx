@@ -1,5 +1,4 @@
 "use client";
-
 import "./view-project.css";
 import Link from "next/link";
 import RequireAuth from "@/components/RequireAuth";
